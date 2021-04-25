@@ -8,7 +8,6 @@ _"PC LOAD LETTER" - WFT does that mean?!_
 
 [![PyPI Version][pypi-image]][pypi-url]
 [![Build Status][build-image]][build-url]
-[![Code Quality][quality-image]][quality-url]
 
 
 
