@@ -9,13 +9,16 @@ lint:  ## Lint and static-check
 	python -m flake8 pcloadletter
 	python -m pylint pcloadletter
 
-coverage:
+coverage:  ## Run tests with coverage
 	coverage erase
 	coverage run --include=pcloadletter/* -m unittest
 	coverage report -m
 
-test:
+test:  ## Run tests
 	python -m unittest
+
+tox:  ## Run tox
+	python -m tox
 
 help:  ## Show help message
 	@IFS=$$'\n' ; \
