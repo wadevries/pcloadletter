@@ -1,0 +1,21 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "pcloadletter"
+author = "Wouter de Vries"
+author-email = "wouter@oxyzen.nl"
+home-page = "https://github.com/wadevries/pcloadletter"
+classifiers = [ "License :: OSI Approved :: MIT License",]
+requires = [
+    "WeasyPrint~=52.0",
+    "Jinja2~=2.11.3",
+    "PyYAML~=5.4.1"
+]
+
+[tool.flit.scripts]
+pcloadletter = "pcloadletter.__main__:main"
+
+[tool.black]
+line-length = 100
