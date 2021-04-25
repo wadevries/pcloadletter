@@ -8,6 +8,7 @@ author = "Wouter de Vries"
 author-email = "wouter@oxyzen.nl"
 home-page = "https://github.com/wadevries/pcloadletter"
 classifiers = [ "License :: OSI Approved :: MIT License",]
+description-file = "README.md"
 requires = [
     "WeasyPrint~=52.0",
     "Jinja2~=2.11.3",
