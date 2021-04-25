@@ -25,10 +25,10 @@ def main(argv=None):
         help="Destination file.",
     )
     parser.add_argument(
-        '--context-file',
-        type=argparse.FileType('r'),
+        "--context-file",
+        type=argparse.FileType("r"),
     )
-    parser.add_argument('extra_context', nargs='*', action=KeyValueAction)
+    parser.add_argument("extra_context", nargs="*", action=KeyValueAction)
 
     options = parser.parse_args(argv)
     generate_invoice(
