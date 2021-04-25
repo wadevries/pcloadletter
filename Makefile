@@ -3,11 +3,19 @@
 
 deps:  ## Install dependencies
 	python -m pip install --upgrade pip
-	python -m pip install black coverage flake8 flit mccabe pylint
+	python -m pip install black coverage flake8 flit mccabe pylint tox
 
 lint:  ## Lint and static-check
 	python -m flake8 pcloadletter
 	python -m pylint pcloadletter
+
+coverage:
+	coverage erase
+	coverage run --include=pcloadletter/* -m unittest
+	coverage report -m
+
+test:
+	python -m unittest
 
 help:  ## Show help message
 	@IFS=$$'\n' ; \
