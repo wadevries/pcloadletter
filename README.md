@@ -9,6 +9,12 @@ _"PC LOAD LETTER" - WFT does that mean?!_
 [![PyPI Version][pypi-image]][pypi-url]
 [![Build Status][build-image]][build-url]
 
+## Installation
+
+```
+pip install pcloadletter
+```
+
 ## Usage
 
 pcloadletter lets you generate a pdf document from an HTML [Jinja template](https://jinja.palletsprojects.com/)
