@@ -1,0 +1,13 @@
+address: |
+  C. Ustomer
+  Paystreet 42
+  12340 Cashville
+
+items:
+  - description: Filing TPS Reports
+    price: 85.15
+    quantity: 15.3
+
+  - description: Paperclips
+    price: 0.0025
+    quantity: 500

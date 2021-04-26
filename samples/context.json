@@ -1,0 +1,10 @@
+{
+  "address": " C. Ustomer\nPaystreet 42\n12340 Cashville",
+  "items": [
+    {
+      "description": "Filing TPS Reports",
+      "price": 85.15,
+      "quantity": 15.3
+    }
+  ]
+}

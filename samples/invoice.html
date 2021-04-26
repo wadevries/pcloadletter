@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="invoice.css" media="print" rel="stylesheet">
+    <title>Invoice</title>
+    <meta name="description" content="Invoice demo sample">
+    <meta name="author" content="Kozea">
+</head>
+
+<body>
+<h1>Invoice</h1>
+
+<aside>
+    <address id="from">
+        P.C. Loadletter
+        123 Fakestreet
+        90210 Springfield
+    </address>
+
+    <address id="to">
+        {% if address is defined -%}
+        {{ address }}
+        {%- else -%}
+        Our awesome developers
+        From all around the world
+        Earth
+        {%- endif -%}
+    </address>
+</aside>
+
+<dl id="informations">
+    <dt>Invoice number</dt>
+    <dd>{{ number }}</dd>
+    <dt>Date</dt>
+    <dd>{{ date | date('%b %d, %Y') }}</dd>
+</dl>
+
+<table>
+    <thead>
+    <tr>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% set total = namespace(total=0) %}
+
+    {% for item in items %}
+        {% set item_total = item.price * item.quantity %}
+        {% set total.total = total.total + item_total %}
+        <tr>
+            <td>{{ item.description }}</td>
+            <td>€ {{ item.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>€ {{ "{:,.2f}".format(item_total) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<table id="total">
+    <thead>
+    <tr>
+        <th>Due by</th>
+        <th>Account number</th>
+        <th>Total due</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{ date | add_days(14) | date('%b %d, %Y') }}</td>
+        <td>132 456 789 012</td>
+        <td>€ {{ "{:,.2f}".format(total.total) }}</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
