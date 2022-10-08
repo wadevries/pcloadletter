@@ -2,7 +2,8 @@ name: publish
 
 on:
     release:
-        types: [created]
+        types: [published]
+    workflow_dispatch:
 
 jobs:
     publish:
@@ -25,4 +26,3 @@ jobs:
                   FLIT_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
               run: |
                   make publish
-
