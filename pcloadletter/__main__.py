@@ -11,7 +11,7 @@ from pcloadletter.parse import KeyValueAction
 
 
 class HelpFormatter(argparse.RawTextHelpFormatter, argparse.ArgumentDefaultsHelpFormatter):
-    ...
+    """Combine RawTextHelpFormatter and ArgumentDefaultsHelpFormatter"""
 
 
 def main(argv=None):
@@ -20,13 +20,14 @@ def main(argv=None):
     parser = argparse.ArgumentParser(
         formatter_class=HelpFormatter,
         description="Generate PDF file from a Jinja-rendered HTML template",
+        # pylint: disable=C0301, C0303
         epilog=textwrap.dedent(
             """
             Examples:
 
                 pcloadletter --template templates/invoice.html --out invoice.pdf invoice_number=2021-001 invoice_date=`date +%Y-%m-%d`
             
-            """
+            """  # noqa: E501, W293
         ),
     )
     parser.add_argument(
@@ -54,6 +55,7 @@ def main(argv=None):
         action=KeyValueAction,
         help="key=value pairs which are added to the template context",
     )
+    # pylint: disable=C0301, C0303
     parser.epilog = textwrap.dedent(
         """
         Examples:
@@ -61,7 +63,7 @@ def main(argv=None):
             pcloadletter --template templates/invoice.html --out invoice.pdf invoice_number=2021-001 invoice_date=`date +%Y-%m-%d`
         
             pcloadletter --template report.html --context-file=report-data.yml addressee="Mr. M. Bolton"
-        """
+        """  # noqa: E501, W293
     )
 
     options = parser.parse_args(argv)

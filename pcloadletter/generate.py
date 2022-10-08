@@ -1,3 +1,7 @@
+"""
+This module contains routines for generating invoices.
+"""
+
 import pathlib
 from datetime import date, timedelta
 from typing import Union
