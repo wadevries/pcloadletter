@@ -3,7 +3,7 @@
 
 deps:  ## Install dependencies
 	python -m pip install --upgrade pip
-	python -m pip install black coverage flake8 flit mccabe pylint tox tox-gh-actions
+	python -m pip install black coverage flake8 flit mccabe pylint
 
 lint:  ## Lint and static-check
 	python -m flake8 pcloadletter
@@ -16,9 +16,6 @@ coverage:  ## Run tests with coverage
 
 test:  ## Run tests
 	python -m unittest
-
-tox:  ## Run tox
-	python -m tox
 
 publish:  ## Publish to PyPi
 	python -m flit publish

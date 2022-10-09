@@ -38,8 +38,9 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pip install -e .
           make deps
 
-      - name: Run tox
+      - name: Run tests
         run: |
-          make tox
+          make test
