@@ -19,6 +19,18 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
+      - name: Install system requirements
+        if: matrix.platform == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0
+
+      - name: Install system requirements
+        if: matrix.platform == 'macos-latest'
+        run: |
+          brew update
+          brew install pango libffi
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
