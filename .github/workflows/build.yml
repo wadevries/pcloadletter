@@ -38,6 +38,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pip install -e .
           make deps
 
       - name: Run tests
