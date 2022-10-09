@@ -3,7 +3,7 @@ A CLI tool to generate PDF documents from HTML templates
 
 ---
 
-_"PC LOAD LETTER" - WFT does that mean?!_
+_"PC LOAD LETTER" - WTF does that mean?!_
 
 
 [![PyPI Version][pypi-image]][pypi-url]
