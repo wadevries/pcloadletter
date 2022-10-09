@@ -1,10 +1,11 @@
 import datetime
-from io import StringIO
+from io import StringIO, BytesIO
+from pathlib import Path
 from unittest import TestCase
 
 from jinja2 import Undefined
 
-from pcloadletter.generate import add_days, date_filter, load_context
+from pcloadletter.generate import add_days, date_filter, load_context, generate_invoice
 
 
 class GenerateTest(TestCase):
@@ -36,3 +37,13 @@ class GenerateTest(TestCase):
 
         with self.subTest("With undefined"):
             self.assertEqual(add_days(Undefined(), 1), Undefined())
+
+    def test_generate_invoice(self):
+        destination = BytesIO()
+        generate_invoice(
+            template=Path("samples/invoice.html"),
+            destination=destination,
+            context_file=StringIO("number: 1234\n"),
+            extra_context={"date": "2000-01-01", "items": []},
+        )
+        self.assertEqual(destination.getvalue()[:7], b"%PDF-1.")

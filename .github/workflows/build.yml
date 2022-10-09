@@ -2,16 +2,14 @@ name: build
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.platform }}
     strategy:
       matrix:
+        platform: [ ubuntu-latest, macos-latest ]
         python-version: [ 3.7, 3.8, 3.9, '3.10' ]
 
     env:
@@ -21,6 +19,18 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
+      - name: Install system requirements
+        if: matrix.platform == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0
+
+      - name: Install system requirements
+        if: matrix.platform == 'macos-latest'
+        run: |
+          brew update
+          brew install pango libffi
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -28,8 +38,9 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pip install -e .
           make deps
 
-      - name: Run tox
+      - name: Run tests
         run: |
-          make tox
+          make test
